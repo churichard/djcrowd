@@ -85,10 +85,6 @@ Template.tweets.rendered = function() {
             	onReady: function (event) {
                     // Play video when player ready.
                     event.target.playVideo();
-                },
-
-                onStateChange: function (event) {
-                	YT.load();
                 }
             }
         });
