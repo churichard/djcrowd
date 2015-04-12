@@ -18,7 +18,21 @@ twit.stream('statuses/filter', {
 });
 
 // Musixmatch API
-var util = Meteor.require("util");
 var mXm = Meteor.require("musixmatch");
 
 mXm.Config.API_KEY = JSON.parse(Assets.getText('mxm.json')).api_key;
+
+var successCallback = function(modelOrCollection) {
+	for (var i = 0; i < modelOrCollection.length; i++) {
+		var attr = modelOrCollection[i].attributes;
+		console.log("Track: " + attr.track_name + ", Artist: " + attr.artist_name);
+	}
+};
+
+Meteor.methods({
+	getTracks: function(currentKeyWord) {
+		if (currentKeyWord != null) {
+			mXm.API.searchTrack({q: currentKeyWord, s_track_rating: "desc"}, successCallback);
+		}
+	}
+});

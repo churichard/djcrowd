@@ -3,6 +3,7 @@ TweetStream = new Meteor.Stream('tweets');
 TweetStream.on('tweet', function(tweet) {
 	tweet.created_at = moment(tweet.created_at).toDate();
 	var keyword = getKeyWords(tweet);
+	CurrentKeyWord = keyword;
 	var query = {};
 	query[keyword] = new RegExp(/[0-9]+/);
 	var keyword_json = KeyWords.findOne(query);
@@ -21,6 +22,7 @@ TweetStream.on('tweet', function(tweet) {
 		KeyWords.update(query, newQuery);
 	}
 	Tweets.insert(tweet);
+	Meteor.call('getTracks', keyword);
 });
 
 Template.tweets.tweets = function() {
