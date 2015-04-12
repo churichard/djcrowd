@@ -7,7 +7,20 @@ a:hover {
 }
 h2 {
 	font-size: 30px !important;
+	background: url("/images/nice_snow.png");
 }
 .description {
 	font-size: 20px !important;
+}
+body {
+	background: url("/images/nice_snow.png");
+}
+center {
+	background: url("/images/nice_snow.png");
+}
+div .content {
+	background: url("/images/nice_snow.png");
+}
+div .segment {
+	background: url("/images/nice_snow.png");
 }
