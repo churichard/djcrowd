@@ -1,8 +1,8 @@
 <template name="tweets">
 	<div class="ui piled feed segment">
   		<h2 class="ui header">
-  			Recent Activity
-  			<div class="sub header">#RichardsParty</div>	
+  			#DJCRichard
+  			<div class="sub header">Tweet a key word with the hashtag #DJCRichard and a song with that key word will be played!</div>	
   		</h2>
   		{{#each tweets}}
   			<div class="event">
@@ -39,6 +39,9 @@
 		  					</div>
 		  				{{/if}}
 		  			{{/if}}
+                    <div class="summary">
+                        <p>Key Words: {{{getKeyWords this}}}</p>
+                    </div>
 				</div>
   			</div>
 		{{/each}}

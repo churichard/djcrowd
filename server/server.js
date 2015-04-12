@@ -1,3 +1,4 @@
+// Twitter API
 var Twitter = Meteor.require("twitter");
 var TweetStream = new Meteor.Stream('tweets');
 var conf = JSON.parse(Assets.getText('twitter.json'));
@@ -15,3 +16,9 @@ twit.stream('statuses/filter', {
 		TweetStream.emit('tweet', data);
 	});
 });
+
+// Musixmatch API
+var util = Meteor.require("util");
+var mXm = Meteor.require("musixmatch");
+
+mXm.Config.API_KEY = JSON.parse(Assets.getText('mxm.json')).api_key;

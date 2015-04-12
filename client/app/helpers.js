@@ -26,3 +26,11 @@ Handlebars.registerHelper('linkify', function(tweet) {
 	});
 	return out;
 });
+
+Handlebars.registerHelper('getKeyWords', function(tweet) {
+	var text = tweet.text.toLowerCase();
+	var hashtag = Hashtag;
+	var hashtagIndex = text.indexOf(hashtag);
+	text = text.substring(0, hashtagIndex) + text.substring(hashtagIndex + hashtag.length, text.length);
+	return text;
+});
