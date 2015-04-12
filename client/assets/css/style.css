@@ -5,3 +5,9 @@ a {
 a:hover {
 	color: #00BAFF;
 }
+h2 {
+	font-size: 30px !important;
+}
+.description {
+	font-size: 20px !important;
+}

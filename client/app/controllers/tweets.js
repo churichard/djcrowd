@@ -35,7 +35,7 @@ TweetStream.on('tweet', function(tweet) {
 				}
 				else {
 					console.log("YouTube URL: " + 'http://youtube.com/watch?v=' + videoId);
-					YouTubeId = videoId;
+					YouTubeId.push(videoId);
 					YT.load();
 				}
 			}));
@@ -67,29 +67,30 @@ Template.tweets.rendered = function() {
 	// YouTube API will call onYouTubeIframeAPIReady() when API ready.
     // Make sure it's a global variable.
     onYouTubeIframeAPIReady = function () {
+    	var id = YouTubeId[0];
+    	YouTubeId = YouTubeId.splice(0, 1);
 
         // New Video Player, the first argument is the id of the div.
         // Make sure it's a global variable.
         player = new YT.Player("player", {
 
-            height: "400", 
-            width: "600", 
+        	height: "400", 
+        	width: "600", 
 
             // videoId is the "v" in URL (ex: http://www.youtube.com/watch?v=LdH1hSWGFGU, videoId = "LdH1hSWGFGU")
-            videoId: YouTubeId,
+            videoId: id,
 
             // Events like ready, state change, 
             events: {
-
-                onReady: function (event) {
-
+            	onReady: function (event) {
                     // Play video when player ready.
                     event.target.playVideo();
+                },
+
+                onStateChange: function (event) {
+                	YT.load();
                 }
-
             }
-
         });
-
     };
 }
