@@ -1,3 +1,3 @@
 # DJ Crowd
 
-A crowd-sourced music playlist for parties
+A crowd-sourced music playlist for parties.
