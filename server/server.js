@@ -19,20 +19,33 @@ twit.stream('statuses/filter', {
 
 // Musixmatch API
 var mXm = Meteor.require("musixmatch");
+Future = Npm.require('fibers/future');
 
 mXm.Config.API_KEY = JSON.parse(Assets.getText('mxm.json')).api_key;
 
-var successCallback = function(modelOrCollection) {
-	for (var i = 0; i < modelOrCollection.length; i++) {
-		var attr = modelOrCollection[i].attributes;
-		console.log("Track: " + attr.track_name + ", Artist: " + attr.artist_name);
-	}
-};
+
+var XMLHttpRequest = Meteor.require("xmlhttprequest").XMLHttpRequest;
+
 
 Meteor.methods({
 	getTracks: function(currentKeyWord) {
+		var future = new Future();
 		if (currentKeyWord != null) {
-			mXm.API.searchTrack({q: currentKeyWord, s_track_rating: "desc"}, successCallback);
+			mXm.API.searchTrack({q: currentKeyWord, s_track_rating: "desc"}, function(modelOrCollection) {
+				var attr = modelOrCollection[0].attributes;
+				future["return"](attr.track_name + " " + attr.artist_name);
+			});
 		}
+		return future.wait();
+	},
+	findVideo: function(searchTerm) {
+		var xmlHttp = null;
+
+	    xmlHttp = new XMLHttpRequest();
+	    var url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + searchTerm + "&key=" + JSON.parse(Assets.getText('youtube.json')).api_key;
+	    xmlHttp.open( "GET", url, false );
+	    xmlHttp.send( null );
+	    var videoId = JSON.parse(xmlHttp.responseText).items[0].id.videoId;
+	    return videoId;
 	}
 });

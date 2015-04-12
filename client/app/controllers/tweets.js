@@ -22,7 +22,24 @@ TweetStream.on('tweet', function(tweet) {
 		KeyWords.update(query, newQuery);
 	}
 	Tweets.insert(tweet);
-	Meteor.call('getTracks', keyword);
+
+	var track = Meteor.call('getTracks', keyword, function(error, result) {
+		if (error) {
+			console.log('ERROR: ', error.reason);
+		}
+		else {
+			result = result.replace(/\s/g, "+");
+			console.log(Meteor.call('findVideo', result, function(error, videoId) {
+				if (error) {
+					console.log('ERROR: ', error.reason);
+				}
+				else {
+					console.log("YouTube URL: " + 'http://youtube.com/watch?v=' + videoId);
+					YouTubeId = videoId;
+				}
+			}));
+		}
+	});
 });
 
 Template.tweets.tweets = function() {

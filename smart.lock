@@ -20,8 +20,8 @@
       },
       "semantic-ui": {
         "git": "https://github.com/nooitaf/meteor-semantic-ui.git",
-        "tag": "v0.15.1",
-        "commit": "ee29706b4ccc99f2d44d5be1347a09a2f77d03cb"
+        "tag": "v0.19.0",
+        "commit": "23ddf7b58db125cc33d0d95d58fcac940f262481"
       },
       "momentjs": {
         "git": "https://github.com/crapthings/meteor-momentjs.git",
