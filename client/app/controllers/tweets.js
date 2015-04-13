@@ -60,6 +60,10 @@ function getKeyWords(tweet) {
 	var hashtag = Hashtag;
 	var hashtagIndex = text.indexOf(hashtag);
 	text = text.substring(0, hashtagIndex).trim() + text.substring(hashtagIndex + hashtag.length, text.length).trim();
+	var textSplit = text.split(" ");
+	if (textSplit.length > 4) {
+		text = textSplit[0] + " " + textSplit[1] + " " + textSplit[2] + " " + textSplit[3];
+	}
 	return text;
 }
 
