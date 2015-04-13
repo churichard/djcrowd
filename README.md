@@ -1,7 +1,7 @@
 # DJ Crowd
 
 ## Description
-DJ Crowd is an innovative web app designed to let your friends and guests decide the music. Based on hashtags from your friends' Twitter posts, DJ Crowd feeds up the perfect song picked in real time for your event.
+DJ Crowd is an innovative web app designed to let your friends and guests decide the music. Based on what your friends tweet in association with a certain hashtag, DJ Crowd feeds up the perfect song picked in real time for your event.
 
 Responding to aspects of the tweeted words and phrases like emotion and word connotations, it searches through an extensive database of modern hits, renowned classics, and everything in between to find the most appropriate song.
 
