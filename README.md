@@ -6,7 +6,7 @@ DJ Crowd is an innovative web app designed to let your friends and guests decide
 Responding to aspects of the tweeted words and phrases like emotion and word connotations, it searches through an extensive database of modern hits, renowned classics, and everything in between to find the most appropriate song.
 
 ## Website
-To learn more about our web app and try out a live demo of it, check out our official website at [DJ Crowd](http://djcrowd.me) or go straight to the demo at [app.djcrowd.me](http://app.djcrowd.me)!
+To learn more about our web app and try out a live demo of it, check out our official website at [DJ Crowd](http://djcrowd.me) or go straight to the [demo](http://app.djcrowd.me)!
 
 ## Contributors
 DJ Crowd was built at HackPrinceton Spring 2015 by Richard Chu, Barak Nehoran, and Yosvani Lopez.
